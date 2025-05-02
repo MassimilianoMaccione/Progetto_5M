@@ -1,0 +1,19 @@
+[
+    {"marca": "Fiat", "modello": "500", "motore": "benzina", "colore": "rosso", "immagine": "static/images/fiat500.jpg"},
+    {"marca": "Fiat", "modello": "Panda", "motore": "diesel", "colore": "bianco", "immagine": "static/images/fiat_panda.jpg"},
+    {"marca": "Ford", "modello": "Fiesta", "motore": "diesel", "colore": "blu", "immagine": "static/images/ford_fiesta.jpg"},
+    {"marca": "Ford", "modello": "Focus", "motore": "benzina", "colore": "nero", "immagine": "static/images/ford_focus.jpg"},
+    {"marca": "Audi", "modello": "A1", "motore": "benzina", "colore": "grigio", "immagine": "static/images/audi_a1.jpg"},
+    {"marca": "Audi", "modello": "A3", "motore": "diesel", "colore": "nero", "immagine": "static/images/audi_a3.jpg"},
+    {"marca": "Volkswagen", "modello": "Golf", "motore": "benzina", "colore": "verde", "immagine": "static/images/vw_golf.jpg"},
+    {"marca": "Volkswagen", "modello": "Polo", "motore": "diesel", "colore": "argento", "immagine": "static/images/vw_polo.jpg"},
+    {"marca": "Renault", "modello": "Clio", "motore": "benzina", "colore": "giallo", "immagine": "static/images/renault_clio.jpg"},
+    {"marca": "Renault", "modello": "Captur", "motore": "diesel", "colore": "rosso", "immagine": "static/images/renault_captur.jpg"},
+    {"marca": "Peugeot", "modello": "208", "motore": "benzina", "colore": "bianco", "immagine": "static/images/peugeot_208.jpg"},
+    {"marca": "Peugeot", "modello": "2008", "motore": "diesel", "colore": "blu", "immagine": "static/images/peugeot_2008.jpg"},
+    {"marca": "Toyota", "modello": "Yaris", "motore": "benzina", "colore": "nero", "immagine": "static/images/toyota_yaris.jpg"},
+    {"marca": "Opel", "modello": "Corsa", "motore": "diesel", "colore": "grigio", "immagine": "static/images/opel_corsa.jpg"},
+    {"marca": "Hyundai", "modello": "i20", "motore": "benzina", "colore": "rosso", "immagine": "static/images/hyundai_i20.jpg"}
+  ]
+  
+  

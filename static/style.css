@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background-color: #e3f2fd; /* Colore di sfondo più vivace */
+    color: #333;
+    line-height: 1.6;
+}
+
+form {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aggiunta di ombra */
+    transition: transform 0.2s ease-in-out; /* Transizione per hover */
+}
+
+form:hover {
+    transform: scale(1.02); /* Effetto hover */
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #90caf9; /* Colore del bordo più vivace */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Aggiunta di ombra */
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center; /* Allineamento al centro */
+}
+
+th {
+    background-color: #42a5f5; /* Colore di sfondo per l'intestazione */
+    color: white;
+    text-transform: uppercase;
+}
+
+td {
+    background-color: #e3f2fd; /* Colore alternato per le celle */
+}
+
+tr:nth-child(even) td {
+    background-color: #bbdefb; /* Riga alternata */
+}
+
+img {
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aggiunta di ombra */
+    transition: transform 0.3s ease-in-out; /* Transizione per hover */
+    max-width: 100px; /* Limita la larghezza delle immagini */
+}
+
+img:hover {
+    transform: scale(1.05); /* Effetto hover */
+}
+
+h1 {
+    text-align: center;
+    color: #1e88e5; /* Colore vivace per il titolo */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Aggiunta di ombra */
+}
+
+button {
+    background-color: #42a5f5; /* Colore vivace per il pulsante */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #1e88e5; /* Colore più scuro al passaggio del mouse */
+    transform: scale(1.05); /* Effetto hover */
+}
+
+#risultati {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aggiunta di ombra */
+}
