@@ -1,50 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto Usate</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Ricerca Auto Usate</h1>
-    <form id="filtroForm">
-        Marca: <input type="text" name="marca"><br>
-        Modello: <input type="text" name="modello"><br>
-        Alimentazione: 
-        <select name="motore">
-            <option value="">--</option>
-            <option value="benzina">Benzina</option>
-            <option value="diesel">Diesel</option>
-        </select><br>
-        Colore: <input type="text" name="colore"><br>
-        <button type="submit">Cerca</button>
-    </form>
+    <!-- Titolo principale -->
+    <header>
+        <h1>Ricerca Auto Usate</h1>
+    </header>
 
-    <div id="risultati"></div>
+    <!-- Form per il filtro -->
+    <section id="filtro">
+        <h2>Filtra le auto</h2>
+        <form id="filtroForm">
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" name="marca"><br>
+            
+            <label for="modello">Modello:</label>
+            <input type="text" id="modello" name="modello"><br>
+            
+            <label for="motore">Alimentazione:</label>
+            <select id="motore" name="motore">
+                <option value="">--</option>
+                <option value="benzina">Benzina</option>
+                <option value="diesel">Diesel</option>
+            </select><br>
+            
+            <label for="colore">Colore:</label>
+            <input type="text" id="colore" name="colore"><br>
+            
+            <button type="submit">Cerca</button>
+        </form>
+    </section>
 
+    <!-- Sezione per i risultati -->
+    <section id="risultati">
+        <h2>Risultati della ricerca</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modello</th>
+                    <th>Motore</th>
+                    <th>Colore</th>
+                    <th>Immagine</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in auto %}
+                <tr>
+                    <td>{{ a.marca }}</td>
+                    <td>{{ a.modello }}</td>
+                    <td>{{ a.motore }}</td>
+                    <td>{{ a.colore }}</td>
+                    <td><img src="{{ a.immagine }}" width="100" alt="Immagine auto"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Script per la gestione del form -->
     <script>
         document.getElementById('filtroForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Raccolta dati dal form
             const formData = new FormData(this);
             const data = Object.fromEntries(formData.entries());
 
+            // Invio della richiesta al server
             fetch('/filtra_auto', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             })
             .then(resp => resp.json())
             .then(auto => {
-                let html = '<table><tr><th>Marca</th><th>Modello</th><th>Motore</th><th>Colore</th><th>Immagine</th></tr>';
+                // Generazione dinamica della tabella dei risultati
+                let html = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Marca</th>
+                                <th>Modello</th>
+                                <th>Motore</th>
+                                <th>Colore</th>
+                                <th>Immagine</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
                 auto.forEach(a => {
-                    html += `<tr>
-                        <td>${a.marca}</td>
-                        <td>${a.modello}</td>
-                        <td>${a.motore}</td>
-                        <td>${a.colore}</td>
-                        <td><img src="${a.immagine}" width="100"></td>
-                    </tr>`;
+                    html += `
+                        <tr>
+                            <td>${a.marca}</td>
+                            <td>${a.modello}</td>
+                            <td>${a.motore}</td>
+                            <td>${a.colore}</td>
+                            <td><img src="${a.immagine}" width="100" alt="Immagine auto"></td>
+                        </tr>`;
                 });
-                html += '</table>';
+                html += '</tbody></table>';
                 document.getElementById('risultati').innerHTML = html;
             });
         });
