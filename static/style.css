@@ -1,9 +1,100 @@
+/* Stile generale */
 body {
     font-family: Arial, sans-serif;
-    margin: 40px;
-    background-color: #e3f2fd; /* Colore di sfondo più vivace */
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
     color: #333;
     line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* Sezione filtro */
+#filtro {
+    background-color: white;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#filtro h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #007bff;
+}
+
+#filtro label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+    font-weight: bold;
+}
+
+#filtro input, #filtro select, #filtro button {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+#filtro button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#filtro button:hover {
+    background-color: #0056b3;
+}
+
+/* Sezione risultati */
+#risultati {
+    margin: 2rem auto;
+    max-width: 800px;
+    overflow-x: auto;
+}
+
+#risultati table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+#risultati th, #risultati td {
+    padding: 0.8rem;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+#risultati th {
+    background-color: #007bff;
+    color: white;
+}
+
+#risultati tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#risultati img {
+    border-radius: 4px;
 }
 
 form {

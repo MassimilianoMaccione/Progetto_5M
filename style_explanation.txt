@@ -1,0 +1,68 @@
+1. border-collapse: collapse;
+   - Rimuove gli spazi tra i bordi delle celle della tabella.
+
+2. margin-top: 1rem;
+   - Aggiunge un margine superiore di 1 rem alla tabella.
+
+3. #risultati th, #risultati td {
+   - Seleziona le celle di intestazione (th) e di contenuto (td) della tabella con ID "risultati".
+
+4. padding: 0.8rem;
+   - Aggiunge un'imbottitura interna di 0.8 rem alle celle.
+
+5. text-align: left;
+   - Allinea il testo delle celle a sinistra.
+
+6. border: 1px solid #ddd;
+   - Aggiunge un bordo solido di 1px con colore grigio chiaro (#ddd) alle celle.
+
+7. #risultati th {
+   - Seleziona solo le celle di intestazione (th) della tabella con ID "risultati".
+
+8. background-color: #007bff;
+   - Imposta il colore di sfondo delle celle di intestazione a blu (#007bff).
+
+9. color: white;
+   - Imposta il colore del testo delle celle di intestazione a bianco.
+
+10. #risultati tr:nth-child(even) {
+    - Seleziona le righe pari della tabella con ID "risultati".
+
+11. background-color: #f2f2f2;
+    - Imposta il colore di sfondo delle righe pari a grigio chiaro (#f2f2f2).
+
+12. #risultati img {
+    - Seleziona le immagini all'interno della tabella con ID "risultati".
+
+13. border-radius: 4px;
+    - Arrotonda gli angoli delle immagini con un raggio di 4px.
+
+14. form {
+    - Seleziona tutti gli elementi `<form>`.
+
+15. margin-bottom: 20px;
+    - Aggiunge un margine inferiore di 20px al modulo.
+
+16. padding: 10px;
+    - Aggiunge un'imbottitura interna di 10px al modulo.
+
+17. background-color: white;
+    - Imposta il colore di sfondo del modulo a bianco.
+
+18. border-radius: 8px;
+    - Arrotonda gli angoli del modulo con un raggio di 8px.
+
+19. width: 300px;
+    - Imposta la larghezza del modulo a 300px.
+
+20. box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    - Aggiunge un'ombra al modulo con un effetto sfumato.
+
+21. transition: transform 0.2s ease-in-out;
+    - Aggiunge una transizione per l'effetto di trasformazione (hover).
+
+22. form:hover {
+    - Seleziona il modulo quando il mouse passa sopra di esso.
+
+23. transform: scale(1.02);
+    - Applica un effetto di ingrandimento (scala 1.02) al modulo durante l'hover.
