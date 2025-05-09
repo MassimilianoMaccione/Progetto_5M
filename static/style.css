@@ -5,16 +5,14 @@ body {
     padding: 0;
     background-color: #f9f9f9;
     color: #333;
-    line-height: 1.6;
 }
 
 /* Header */
 header {
     background-color: #007bff;
     color: white;
-    padding: 1rem 0;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
 }
 
 header h1 {
@@ -24,23 +22,16 @@ header h1 {
 
 /* Sezione filtro */
 #filtro {
-    background-color: white;
     margin: 2rem auto;
-    padding: 1.5rem;
+    padding: 1rem;
     max-width: 600px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#filtro h2 {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-    color: #007bff;
+    background-color: white;
+    border: 1px solid #ddd;
 }
 
 #filtro label {
     display: block;
-    margin: 0.5rem 0 0.2rem;
+    margin-bottom: 0.5rem;
     font-weight: bold;
 }
 
@@ -49,8 +40,6 @@ header h1 {
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
 }
 
 #filtro button {
@@ -58,7 +47,6 @@ header h1 {
     color: white;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 #filtro button:hover {
@@ -69,19 +57,17 @@ header h1 {
 #risultati {
     margin: 2rem auto;
     max-width: 800px;
-    overflow-x: auto;
 }
 
 #risultati table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1rem;
 }
 
 #risultati th, #risultati td {
-    padding: 0.8rem;
-    text-align: left;
+    padding: 0.5rem;
     border: 1px solid #ddd;
+    text-align: left;
 }
 
 #risultati th {
@@ -94,91 +80,18 @@ header h1 {
 }
 
 #risultati img {
+    max-width: 100px;
     border-radius: 4px;
 }
 
-form {
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: white;
-    border-radius: 8px;
-    width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aggiunta di ombra */
-    transition: transform 0.2s ease-in-out; /* Transizione per hover */
-}
-
-form:hover {
-    transform: scale(1.02); /* Effetto hover */
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-    background-color: white;
-    border: 1px solid #90caf9; /* Colore del bordo più vivace */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Aggiunta di ombra */
-    margin-top: 10px;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center; /* Allineamento al centro */
-}
-
-th {
-    background-color: #42a5f5; /* Colore di sfondo per l'intestazione */
-    color: white;
-    text-transform: uppercase;
-}
-
-td {
-    background-color: #e3f2fd; /* Colore alternato per le celle */
-}
-
-tr:nth-child(even) td {
-    background-color: #bbdefb; /* Riga alternata */
-}
-
-img {
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aggiunta di ombra */
-    transition: transform 0.3s ease-in-out; /* Transizione per hover */
-    max-width: 100px; /* Limita la larghezza delle immagini */
-}
-
-img:hover {
-    transform: scale(1.05); /* Effetto hover */
-}
-
-h1 {
-    text-align: center;
-    color: #1e88e5; /* Colore vivace per il titolo */
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Aggiunta di ombra */
-}
-
 button {
-    background-color: #42a5f5; /* Colore vivace per il pulsante */
+    background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 0.5rem 1rem;
     cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    background-color: #1e88e5; /* Colore più scuro al passaggio del mouse */
-    transform: scale(1.05); /* Effetto hover */
-}
-
-#risultati {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aggiunta di ombra */
+    background-color: #0056b3;
 }
