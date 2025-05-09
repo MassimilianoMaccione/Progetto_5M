@@ -12,18 +12,18 @@ header {
     background-color: #007bff;
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 16px;
 }
 
 header h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 32px;
 }
 
 /* Sezione filtro */
 #filtro {
-    margin: 2rem auto;
-    padding: 1rem;
+    margin: 32px auto;
+    padding: 16px;
     max-width: 600px;
     background-color: white;
     border: 1px solid #ddd;
@@ -31,14 +31,14 @@ header h1 {
 
 #filtro label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
     font-weight: bold;
 }
 
 #filtro input, #filtro select, #filtro button {
     width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
+    padding: 8px;
+    margin-bottom: 16px;
     border: 1px solid #ccc;
 }
 
@@ -55,7 +55,7 @@ header h1 {
 
 /* Sezione risultati */
 #risultati {
-    margin: 2rem auto;
+    margin: 32px auto;
     max-width: 800px;
 }
 
@@ -65,7 +65,7 @@ header h1 {
 }
 
 #risultati th, #risultati td {
-    padding: 0.5rem;
+    padding: 8px;
     border: 1px solid #ddd;
     text-align: left;
 }
@@ -88,7 +88,7 @@ button {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 8px 16px;
     cursor: pointer;
 }
 
