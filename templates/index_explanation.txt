@@ -1,0 +1,26 @@
+22. {% for a in auto %}
+    - Inizia un ciclo `for` in Jinja2 per iterare sulla lista delle auto passata dal server.
+
+23. <tr>
+    - Crea una nuova riga nella tabella per ogni auto.
+
+24. <td>{{ a.marca }}</td>
+    - Inserisce la marca dell'auto nella cella utilizzando la variabile `a.marca`.
+
+25. <td>{{ a.modello }}</td>
+    - Inserisce il modello dell'auto nella cella utilizzando la variabile `a.modello`.
+
+26. <td>{{ a.motore }}</td>
+    - Inserisce il tipo di motore dell'auto nella cella utilizzando la variabile `a.motore`.
+
+27. <td>{{ a.colore }}</td>
+    - Inserisce il colore dell'auto nella cella utilizzando la variabile `a.colore`.
+
+28. <td><img src="{{ a.immagine }}" width="100" alt="Immagine auto"></td>
+    - Inserisce un'immagine dell'auto con larghezza 100px e un testo alternativo.
+
+29. </tr>
+    - Chiude la riga della tabella.
+
+30. {% endfor %}
+    - Termina il ciclo `for` in Jinja2.
