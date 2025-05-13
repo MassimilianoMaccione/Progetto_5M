@@ -1,97 +1,90 @@
-/* Stile generale */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
     color: #333;
+    line-height: 1.6;
 }
 
-/* Header */
 header {
     background-color: #007bff;
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgb(0, 0, 0);
 }
 
 header h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 28px;
 }
 
-/* Sezione filtro */
-#filtro {
-    margin: 2rem auto;
-    padding: 1rem;
-    max-width: 600px;
-    background-color: white;
-    border: 1px solid #ddd;
-}
-
-#filtro label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-
-#filtro input, #filtro select, #filtro button {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-}
-
-#filtro button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-#filtro button:hover {
-    background-color: #0056b3;
-}
-
-/* Sezione risultati */
-#risultati {
-    margin: 2rem auto;
+main {
     max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
 }
 
-#risultati table {
-    width: 100%;
-    border-collapse: collapse;
+h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
 }
 
-#risultati th, #risultati td {
-    padding: 0.5rem;
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, select, button {
+    padding: 10px;
     border: 1px solid #ddd;
-    text-align: left;
-}
-
-#risultati th {
-    background-color: #007bff;
-    color: white;
-}
-
-#risultati tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-#risultati img {
-    max-width: 100px;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
 button {
     background-color: #007bff;
     color: white;
-    border: none;
-    padding: 0.5rem 1rem;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #0056b3;
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
 }

@@ -33,6 +33,15 @@ def filtra_auto():
     # Restituisce i risultati come JSON
     return jsonify(risultati)
 
+@app.route('/lista_auto', methods=['GET'])
+def lista_auto():
+    # Carica i dati delle auto dal file JSON
+    with open('cars.json', 'r') as f:
+        auto = json.load(f)
+    
+    # Restituisce la lista di tutte le auto come JSON
+    return jsonify(auto)
+
 if __name__ == '__main__':
     # Avvia l'app Flask in modalità debug
     app.run(debug=True)

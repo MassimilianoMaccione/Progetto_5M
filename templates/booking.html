@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prenotazioni Scolastiche</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='booking.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Sistema di Prenotazione</h1>
+    </header>
+    <main>
+        <!-- Login Utenti -->
+        <section id="login-section">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" placeholder="Inserisci la tua email" required>
+                
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" placeholder="Inserisci la tua password" required>
+                
+                <button type="submit">Accedi</button>
+            </form>
+        </section>
+
+        <!-- Registrazione Utenti -->
+        <section id="register-section">
+            <h2>Registrazione</h2>
+            <form id="registerForm">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" placeholder="Inserisci il tuo nome" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Inserisci la tua email" required>
+                
+                <label for="role">Ruolo:</label>
+                <select id="role" required>
+                    <option value="studente">Studente</option>
+                    <option value="docente">Docente</option>
+                </select>
+                
+                <button type="submit">Registrati</button>
+            </form>
+        </section>
+
+        <!-- Prenotazioni -->
+        <section id="form-section">
+            <h2>Effettua una Prenotazione</h2>
+            <form id="bookingForm">
+                <label for="event">Evento:</label>
+                <input type="text" id="event" placeholder="Nome evento" required>
+                
+                <label for="date">Data:</label>
+                <input type="date" id="date" required>
+                
+                <button type="submit">Prenota</button>
+            </form>
+        </section>
+
+        <!-- Calendario Eventi -->
+        <section id="events-section">
+            <h2>Calendario Eventi</h2>
+            <ul id="eventsList"></ul>
+        </section>
+    </main>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            const result = await response.json();
+            if (response.ok) {
+                alert(result.message);
+                loadEvents();
+            } else {
+                alert(result.message);
+            }
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const role = document.getElementById('role').value;
+
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, role })
+            });
+            const result = await response.json();
+            alert(result.message);
+        });
+
+        document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const event = document.getElementById('event').value;
+            const date = document.getElementById('date').value;
+
+            const response = await fetch('/prenota', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ event, date })
+            });
+            const result = await response.json();
+            alert(result.message);
+        });
+
+        async function loadEvents() {
+            const response = await fetch('/eventi');
+            const events = await response.json();
+            const eventsList = document.getElementById('eventsList');
+            eventsList.innerHTML = events.map(e => `
+                <li>${e.name} - ${e.date}</li>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
