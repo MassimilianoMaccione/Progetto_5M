@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendario Eventi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='booking.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Calendario Eventi</h1>
+        <div style="float:right; display: flex; align-items: center; gap: 12px; background: #f4f4f4; border-radius: 20px; padding: 8px 18px; box-shadow: 0 2px 8px #007bff22;">
+            <span style="font-size: 1.2em; color: #007bff;">👤</span>
+            <span style="font-weight: bold; color: #222;">{{ name }}</span>
+            <a href="{{ url_for('logout') }}">
+                <button style="background: #dc3545; color: #fff; border: none; border-radius: 6px; padding: 7px 18px; font-weight: bold; cursor: pointer; transition: background 0.2s;">Logout</button>
+            </a>
+        </div>
+    </header>
+    <main>
+        <h2>Eventi disponibili</h2>
+        {% if user_role == 'professore' %}
+        <section style="margin-bottom: 30px; background: #eef6ff; padding: 18px; border-radius: 10px;">
+            <h3>Crea nuovo evento</h3>
+            <form id="creaEventoForm" autocomplete="off">
+                <input type="text" name="title" placeholder="Titolo" required>
+                <input type="text" name="luogo" placeholder="Luogo" required>
+                <input type="date" name="date" required>
+                <input type="time" name="ora" required>
+                <input type="text" name="description" placeholder="Descrizione" required>
+                <button type="submit" style="background: #007bff; color: #fff; border: none; border-radius: 6px; padding: 7px 18px; font-weight: bold;">Crea Evento</button>
+            </form>
+        </section>
+        {% endif %}
+        {% if events|length == 0 %}
+            <p style="text-align:center; color:#888;">Nessun evento disponibile.</p>
+        {% else %}
+        <table>
+            <tr>
+                <th>Titolo</th>
+                <th>Luogo</th>
+                <th>Data</th>
+                <th>Ora</th>
+                <th>Descrizione</th>
+                <th>Azione</th>
+                {% if user_role == 'professore' %}
+                <th>Gestione</th>
+                {% endif %}
+            </tr>
+            {% for event in events %}
+            <tr>
+                <td>{{ event['title'] }}</td>
+                <td>{{ event['luogo'] }}</td>
+                <td>{{ event['date'] }}</td>
+                <td>{{ event['ora'] }}</td>
+                <td>{{ event['description'] }}</td>
+                <td>
+                    {% if event['id'] in booked_event_ids %}
+                        <button onclick="annullaPrenotazione({{ event['id'] }})">Annulla prenotazione</button>
+                    {% else %}
+                        <button onclick="prenota({{ event['id'] }})">Prenota</button>
+                    {% endif %}
+                </td>
+                {% if user_role == 'professore' %}
+                <td>
+                    <button onclick="eliminaEvento({{ event['id'] }})" style="background: #dc3545; color: #fff; border: none; border-radius: 6px; padding: 7px 12px; font-weight: bold;">Elimina</button>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+        <div id="msg"></div>
+    </main>
+    <script>
+    function prenota(event_id) {
+        const group_name = prompt("Nome gruppo (opzionale):") || "";
+        fetch('/prenota', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({event_id, group_name})
+        })
+        .then(r => r.json())
+        .then(msg => {
+            document.getElementById('msg').innerText = msg.message;
+            setTimeout(() => location.reload(), 800);
+        });
+    }
+    function annullaPrenotazione(event_id) {
+        if (!confirm("Vuoi annullare la prenotazione per questo evento?")) return;
+        fetch('/annulla_prenotazione', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({event_id})
+        })
+        .then(r => r.json())
+        .then(msg => {
+            document.getElementById('msg').innerText = msg.message;
+            setTimeout(() => location.reload(), 800);
+        });
+    }
+    {% if user_role == 'professore' %}
+    document.addEventListener('DOMContentLoaded', function() {
+        var form = document.getElementById('creaEventoForm');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const data = Object.fromEntries(new FormData(form));
+                fetch('/gestione_eventi', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                })
+                .then(r => r.json())
+                .then(msg => {
+                    document.getElementById('msg').innerText = msg.message;
+                    setTimeout(() => location.reload(), 800);
+                });
+            });
+        }
+    });
+    // Gestione eliminazione evento
+    function eliminaEvento(event_id) {
+        if (!confirm("Vuoi eliminare questo evento?")) return;
+        fetch('/elimina_evento', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({event_id})
+        })
+        .then(r => r.json())
+        .then(msg => {
+            document.getElementById('msg').innerText = msg.message;
+            setTimeout(() => location.reload(), 800);
+        });
+    }
+    {% endif %}
+    </script>
+</body>
+</html>

@@ -60,11 +60,11 @@ ul {
 }
 
 ul li {
-    padding: 10px;
-    margin-bottom: 5px;
-    background-color: #f4f4f4;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+    padding: 10px; /* Spaziatura interna per il contenuto dell'elemento */
+    margin-bottom: 5px; /* Spaziatura esterna sotto ogni elemento della lista */
+    background-color: #f4f4f4; /* Colore di sfondo grigio chiaro */
+    border-radius: 5px; /* Angoli arrotondati */
+    border: 1px solid #ddd; /* Bordo grigio chiaro */
 }
 
 table {

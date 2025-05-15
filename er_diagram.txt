@@ -1,0 +1,56 @@
+# DIAGRAMMA ER DEL DATABASE
+
+# Entità e relazioni principali:
+
+# +-------------------+        +-------------------+        +-------------------+
+# |      user         |        |      booking      |        |      event        |
+# +-------------------+        +-------------------+        +-------------------+
+# | id (PK)           |<-----+ | id (PK)           |   +--->| id (PK)           |
+# | name              |      | | email             |   |    | title             |
+# | email (UNIQUE)    |      | | event_id (FK)     |---+    | luogo             |
+# | password          |      | | group_name        |        | date              |
+# | role              |      | +-------------------+        | ora               |
+# +-------------------+      |                            | description        |
+#                            +----------------------------+-------------------+
+
+# Relazioni:
+# - Un utente (user) può avere molte prenotazioni (booking).
+# - Un evento (event) può avere molte prenotazioni (booking).
+# - Ogni prenotazione (booking) è collegata a un utente (tramite email) e a un evento (tramite event_id).
+
+# Legenda:
+# - PK = Primary Key (chiave primaria)
+# - FK = Foreign Key (chiave esterna)
+# - UNIQUE = valore univoco
+
+# Nota:
+# - La relazione tra `booking` e `user` è tramite il campo `email` (non tramite un vero FK, ma logicamente collegata).
+# - La relazione tra `booking` e `event` è tramite `event_id` (FK).
+
+```mermaid
+erDiagram
+    USER {
+        INTEGER id PK
+        TEXT name
+        TEXT email UNIQUE
+        TEXT password
+        TEXT role
+    }
+    EVENT {
+        INTEGER id PK
+        TEXT title
+        TEXT luogo
+        TEXT date
+        TEXT ora
+        TEXT description
+    }
+    BOOKING {
+        INTEGER id PK
+        TEXT email
+        INTEGER event_id FK
+        TEXT group_name
+    }
+
+    USER ||..o{ BOOKING : "ha"
+    EVENT ||..o{ BOOKING : "ha"
+```

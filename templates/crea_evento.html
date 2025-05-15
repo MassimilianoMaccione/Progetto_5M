@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Crea Evento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='booking.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Crea un nuovo evento</h1>
+        <div style="float:right;">
+            <span style="font-weight: bold;">{{ name }}</span>
+            <a href="{{ url_for('logout') }}"><button>Logout</button></a>
+        </div>
+    </header>
+    <main>
+        <form id="creaEventoForm" autocomplete="off">
+            <input type="text" name="title" placeholder="Titolo" required>
+            <input type="text" name="luogo" placeholder="Luogo" required>
+            <input type="date" name="date" required>
+            <input type="time" name="ora" required>
+            <input type="text" name="description" placeholder="Descrizione" required>
+            <button type="submit">Crea Evento</button>
+        </form>
+        <div id="msg"></div>
+    </main>
+    <script>
+    document.getElementById('creaEventoForm').onsubmit = function(e) {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(this));
+        fetch('/gestione_eventi', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        })
+        .then(r => r.json())
+        .then(msg => {
+            document.getElementById('msg').innerText = msg.message;
+            // Visualizza subito la lista eventi dopo la creazione
+            if (msg.redirect) window.location.href = msg.redirect;
+        });
+    };
+    </script>
+</body>
+</html>

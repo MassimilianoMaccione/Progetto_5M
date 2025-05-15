@@ -22,13 +22,13 @@ def filtra_auto():
         auto = json.load(f)
 
     # Filtra le auto in base ai criteri forniti
-    risultati = [
-        a for a in auto
-        if (dati['marca'] == '' or a['marca'].lower() == dati['marca'].lower()) and
-           (dati['modello'] == '' or a['modello'].lower() == dati['modello'].lower()) and
-           (dati['motore'] == '' or a['motore'].lower() == dati['motore'].lower()) and
-           (dati['colore'] == '' or a['colore'].lower() == dati['colore'].lower())
-    ]
+    risultati = []
+    for a in auto:
+        if ((dati['marca'] == '' or a['marca'].lower() == dati['marca'].lower()) and
+            (dati['modello'] == '' or a['modello'].lower() == dati['modello'].lower()) and
+            (dati['motore'] == '' or a['motore'].lower() == dati['motore'].lower()) and
+            (dati['colore'] == '' or a['colore'].lower() == dati['colore'].lower())):
+            risultati.append(a)
 
     # Restituisce i risultati come JSON
     return jsonify(risultati)

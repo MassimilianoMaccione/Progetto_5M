@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Eventi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='booking.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Lista Eventi</h1>
+        <div style="float:right;">
+            <span style="font-weight: bold;">{{ name }}</span>
+            <a href="{{ url_for('logout') }}"><button>Logout</button></a>
+        </div>
+    </header>
+    <main>
+        <a id="creaEventoBtn" href="{{ url_for('crea_evento_page') }}" style="display:none;">
+            <button style="margin-bottom:20px;">Crea nuovo evento</button>
+        </a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Titolo</th>
+                    <th>Luogo</th>
+                    <th>Data</th>
+                    <th>Ora</th>
+                    <th>Descrizione</th>
+                    <th>Azione</th>
+                    <th id="gestioneHeader" style="display:none;">Gestione</th>
+                </tr>
+            </thead>
+            <tbody id="eventiTbody">
+            </tbody>
+        </table>
+        <div id="msg"></div>
+    </main>
+    <script>
+    function prenota(event_id) {
+        const group_name = prompt("Nome gruppo (opzionale):") || "";
+        fetch('/prenota', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({event_id, group_name})
+        })
+        .then(r => r.json())
+        .then(msg => {
+            document.getElementById('msg').innerText = msg.message;
+            setTimeout(() => aggiornaEventi(), 800);
+        });
+    }
+    function annullaPrenotazione(event_id) {
+        if (!confirm("Vuoi annullare la prenotazione per questo evento?")) return;
+        fetch('/annulla_prenotazione', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({event_id})
+        })
+        .then(r => r.json())
+        .then(msg => {
+            document.getElementById('msg').innerText = msg.message;
+            setTimeout(() => aggiornaEventi(), 800);
+        });
+    }
+    function eliminaEvento(event_id) {
+        if (!confirm("Vuoi eliminare questo evento?")) return;
+        fetch('/elimina_evento', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({event_id})
+        })
+        .then(r => r.json())
+        .then(msg => {
+            document.getElementById('msg').innerText = msg.message;
+            setTimeout(() => aggiornaEventi(), 800);
+        });
+    }
+    async function aggiornaEventi() {
+        const response = await fetch('/lista_eventi_json');
+        if (!response.ok) return;
+        const dati = await response.json();
+        const tbody = document.getElementById('eventiTbody');
+        const gestioneHeader = document.getElementById('gestioneHeader');
+        const creaEventoBtn = document.getElementById('creaEventoBtn');
+        tbody.innerHTML = dati.events.map(event => {
+            let azioneBtn = dati.booked_event_ids.includes(event.id) ?
+                `<button onclick=\"annullaPrenotazione(${event.id})\">Annulla prenotazione</button>` :
+                `<button onclick=\"prenota(${event.id})\">Prenota</button>`;
+            let gestioneBtn = dati.user_role === 'professore' ?
+                `<td><button onclick=\"eliminaEvento(${event.id})\" style=\"background: #dc3545; color: #fff; border: none; border-radius: 6px; padding: 7px 12px; font-weight: bold;\">Elimina</button></td>` : '';
+            return `<tr>
+                <td>${event.title}</td>
+                <td>${event.luogo}</td>
+                <td>${event.date}</td>
+                <td>${event.ora}</td>
+                <td>${event.description}</td>
+                <td>${azioneBtn}</td>
+                ${gestioneBtn}
+            </tr>`;
+        }).join('');
+        gestioneHeader.style.display = dati.user_role === 'professore' ? '' : 'none';
+        creaEventoBtn.style.display = dati.user_role === 'professore' ? '' : 'none';
+    }
+    aggiornaEventi();
+    setInterval(aggiornaEventi, 5000); // Aggiorna ogni 5 secondi
+    </script>
+</body>
+</html>
