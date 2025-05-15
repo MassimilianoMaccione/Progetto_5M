@@ -11,41 +11,35 @@ header {
     background-color: #007bff;
     color: white;
     text-align: center;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgb(0, 0, 0);
+    padding: 1rem;
 }
 
 header h1 {
     margin: 0;
-    font-size: 28px;
+    font-size: 2rem;
 }
 
-main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
+/* Sezione filtro */
+#filtro {
+    margin: 2rem auto;
+    padding: 1rem;
+    max-width: 600px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgb(0, 0, 0);
 }
 
-h2 {
-    text-align: center;
-    color: #007bff;
-    margin-bottom: 20px;
+#filtro label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-input, select, button {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
+#filtro input, #filtro select, #filtro button {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
 }
 
 button {
@@ -54,26 +48,24 @@ button {
     cursor: pointer;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+#filtro button:hover {
+    background-color: #0056b3;
 }
 
-ul li {
-    padding: 10px; /* Spaziatura interna per il contenuto dell'elemento */
-    margin-bottom: 5px; /* Spaziatura esterna sotto ogni elemento della lista */
-    background-color: #f4f4f4; /* Colore di sfondo grigio chiaro */
-    border-radius: 5px; /* Angoli arrotondati */
-    border: 1px solid #ddd; /* Bordo grigio chiaro */
+/* Sezione risultati */
+#risultati {
+    margin: 2rem auto;
+    max-width: 800px;
 }
 
-table {
+#risultati table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-th, td {
+#risultati th, #risultati td {
+    padding: 0.5rem;
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
@@ -85,6 +77,23 @@ th {
     text-transform: uppercase;
 }
 
-tr:nth-child(even) {
+#risultati tr:nth-child(even) {
     background-color: #f2f2f2;
+}
+
+#risultati img {
+    max-width: 100px;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
