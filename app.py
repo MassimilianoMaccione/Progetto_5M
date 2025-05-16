@@ -20,12 +20,12 @@ def filtra_auto():
     with open(CARS_JSON_PATH, 'r', encoding='utf-8') as f:
         auto = json.load(f)
     risultati = []
-    for a in auto:
-        if ((not dati.get('marca') or a['marca'].lower() == dati['marca'].lower()) and
-            (not dati.get('modello') or a['modello'].lower() == dati['modello'].lower()) and
-            (not dati.get('motore') or a['motore'].lower() == dati['motore'].lower()) and
-            (not dati.get('colore') or a['colore'].lower() == dati['colore'].lower())):
-            risultati.append(a)
+    for i in auto:
+        if ((not dati.get('marca') or i['marca'].lower() == dati['marca'].lower()) and
+            (not dati.get('modello') or i['modello'].lower() == dati['modello'].lower()) and
+            (not dati.get('motore') or i['motore'].lower() == dati['motore'].lower()) and
+            (not dati.get('colore') or i['colore'].lower() == dati['colore'].lower())):
+            risultati.append(i)
     return jsonify(risultati)
 
 @app.route('/lista_auto', methods=['GET'])

@@ -45,13 +45,13 @@
                     </tr>
                 </thead>
                 <tbody id="risultatiTabella">
-                    {% for a in auto %}
+                    {% for i in auto %}
                     <tr>
-                        <td>{{ a.marca }}</td>
-                        <td>{{ a.modello }}</td>
-                        <td>{{ a.motore }}</td>
-                        <td>{{ a.colore }}</td>
-                        <td><img src="{{ a.immagine }}" alt="Immagine auto" width="100"></td>
+                        <td>{{ i.marca }}</td>
+                        <td>{{ i.modello }}</td>
+                        <td>{{ i.motore }}</td>
+                        <td>{{ i.colore }}</td>
+                        <td><img src="{{ i.immagine }}" alt="Immagine auto" width="100"></td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -78,13 +78,13 @@
 
             // Aggiornamento della tabella dei risultati
             const risultatiTabella = document.getElementById('risultatiTabella');
-            risultatiTabella.innerHTML = auto.map(a => `
+            risultatiTabella.innerHTML = auto.map(i => `
                 <tr>
-                    <td>${a.marca}</td>
-                    <td>${a.modello}</td>
-                    <td>${a.motore}</td>
-                    <td>${a.colore}</td>
-                    <td><img src="${a.immagine}" alt="Immagine auto" width="100"></td>
+                    <td>${i.marca}</td>
+                    <td>${i.modello}</td>
+                    <td>${i.motore}</td>
+                    <td>${i.colore}</td>
+                    <td><img src="${i.immagine}" alt="Immagine auto" width="100"></td>
                 </tr>
             `).join('');
         });
