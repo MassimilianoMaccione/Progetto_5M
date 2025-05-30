@@ -74,13 +74,10 @@ erDiagram
 
 *(Da aggiungere: puoi usare uno strumento come [PlantUML](https://plantuml.com/class-diagram) o [dbdiagram.io] per generare il diagramma delle classi Python.)*
 
----
 
-## 📂 Struttura del progetto
 
-Vedi sezione "Architettura del progetto".
 
----
+
 
 ## ▶️ Esempio di utilizzo
 
