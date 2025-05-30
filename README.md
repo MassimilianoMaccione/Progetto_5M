@@ -72,11 +72,36 @@ erDiagram
 
 ## 🧩 UML delle Classi
 
-*(Da aggiungere: puoi usare uno strumento come [PlantUML](https://plantuml.com/class-diagram) o [dbdiagram.io] per generare il diagramma delle classi Python.)*
 
+```mermaid
+classDiagram
+    class User {
+        +Integer id
+        +Text name
+        +Text email
+        +Text password
+        +Text role
+    }
 
+    class Event {
+        +Integer id
+        +Text title
+        +Text date
+        +Text description
+        +Text luogo
+        +Text ora
+    }
 
+    class Booking {
+        +Integer id
+        +Text email
+        +Integer event_id
+        +Text group_name
+    }
 
+    User "1" --> "*" Booking : effettua
+    Event "1" --> "*" Booking : riceve
+```
 
 
 ## ▶️ Esempio di utilizzo
