@@ -40,13 +40,12 @@ school_booking_app/
 
 ## 🗃 Modello ER
 
-```
-mermaid
+```mermaid
 erDiagram
     USER {
         INTEGER id PK
         TEXT name
-        TEXT email UNIQUE
+        TEXT email
         TEXT password
         TEXT role
     }
